@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CaloOUTlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add Activity</h1>
+	<div>
+		<form th:object="${outtake}" th:action="@{save1}" action="#" method="post">
+		  	<label for="fname">Sport</label>
+			<input type="text" id="sport" th:field="*{sport}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="lname">Date</label>
+			<input type="text" id="lname" th:field="*{dateO}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="email">Calories lost</label>
+			<input type="text" th:field="*{calOUT}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="time">Time</label>
+			<input type="text" th:field="*{timeO}" />
+			<div style="clear: both; display: block; height: 10px;"></div>							
+		
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

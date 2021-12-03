@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CaloIntaelist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add foody</h1>
+	<div>
+		<form th:object="${intake}" th:action="@{save}" action="#" method="post">
+		  	<label for="fname">Food</label>
+			<input type="text" id="food" th:field="*{food}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="lname">Calories in</label>
+			<input type="text" id="lname" th:field="*{calorIN}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="email">date</label>
+			<input type="text" th:field="*{dateI}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="deplist">Time</label>
+			 <select id="deplist" th:field="*{time}" class="form-control">
+       			<option th:each="time: ${times}" th:value="${time.timeID}" th:text="${time.time}"></option>
+    		</select>							
+		
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

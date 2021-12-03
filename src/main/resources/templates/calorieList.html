@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Calories</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+	<div class="col-md-4">
+		<h1>Calories</h1>
+	</div>
+	<div class="col-md-4">
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
+    <table>
+		<tr>
+		    <th>Food</th>
+		    <th>Calories</th>
+		    <th>Date</th>
+		    <th>Time</th>
+		    <th sec:authorize="hasRole('ADMIN')"> </th>
+		</tr>  
+    	<tr th:each = "caloIn : ${intake}">
+    		<td th:text="${caloIn.food}"></td>
+    		<td th:text="${caloIn.calorIN}"></td>
+    		<td th:text="${caloIn.dateI}"></td>
+    		<td th:text="${caloIn.Time.time}"></td>
+    		<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${caloIn.inId})}" class="btn btn-danger">Delete</a></td> 
+ 		
+    	</tr>
+     </table>
+     <a href="/add">Add calorie intake</a>
+     <br>
+     <a href="/sportList">Your calorie outtake</a> 
+	</div>    	
+</body>
+</html>
